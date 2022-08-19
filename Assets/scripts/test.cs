@@ -8,6 +8,7 @@ public class test : MonoBehaviour
 {
     public static int stateOfOvenSlider = 0;
 
+
     public bool flag = true;
 
     public string txt;
@@ -26,6 +27,7 @@ public class test : MonoBehaviour
 
     private void Start()
     {
+
         fileObj = new StreamReader("Assets/Reciptes/Reciepes.json");
         string json = fileObj.ReadToEnd();
         fileObj.Close();

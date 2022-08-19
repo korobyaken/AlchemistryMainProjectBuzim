@@ -10,8 +10,17 @@ public class Effects : MonoBehaviour
     public ParticleSystem ovenNonRecipte;
     public ParticleSystem ovenTimeOut;
 
-    public GameObject mt;
+    [SerializeField]
+    public static GameObject mt;
     public GameObject spawned;
+
+    public Vector3 popravka;
+
+    private void Start()
+    {
+        mt = GameObject.Find("NameUI");
+        Debug.Log("PanzerKampfWagenIV");
+    }
 
     public void KettelNonRecipte()
     {
@@ -33,11 +42,13 @@ public class Effects : MonoBehaviour
         ovenTimeOut.Play();
     }
 
-    public void ShowName(GameObject other, bool GO)
+    public static void ShowName(GameObject other)
     {
-        if (GO)
+        if (other.tag == "Material")
         {
-            mt.GetComponent<TextMeshPro>().text = other.GetComponent<ItemMaterial>().name;
+            Vector3 positionObject = other.transform.position;
+            mt.transform.position = new Vector3(positionObject.x + 0f, positionObject.y + .2f, positionObject.z + 0f);
+            mt.GetComponent<TextMeshPro>().text = other.GetComponent<ItemMaterial>().nameUI;
             mt.transform.SetParent(other.gameObject.transform);
             mt.SetActive(true);
         }

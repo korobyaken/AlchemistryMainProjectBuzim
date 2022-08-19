@@ -21,7 +21,6 @@ public class ColliderTrigger : MonoBehaviour
     private bool been = false;                                                                                          //Переменная определяющая есть такой объект на другой полке или нет
     private void OnTriggerEnter(Collider other)                                                                         //Метод вызываемый, когда объект попадает в коллайдер
     {
-        Debug.Log("nknknkhnknkn mk");
         if (other.tag == "Material")                                                                                    
         {
             quantity++;
@@ -36,7 +35,9 @@ public class ColliderTrigger : MonoBehaviour
                     }
                     Destroy(other.gameObject);
                     quantity--;
+                    Debug.Log("First point");
                     spawned = Instantiate(temporary_GO, new Vector3(this.transform.position.x + distanceX, this.transform.position.y - 5f, this.transform.position.z + distanceZ), this.transform.rotation);
+                    Debug.Log("Second point");
                     CreateNewObject();                                                                                  //Создание объекта
                     been = true;
                     if (!spawned.GetComponent<Rigidbody>().useGravity)  
@@ -67,8 +68,11 @@ public class ColliderTrigger : MonoBehaviour
             {
                 spawned.GetComponent<Rigidbody>().useGravity = true;
             }
+            Debug.Log("Function point");
             Instantiate(spawned, new Vector3(this.transform.position.x + distanceX, this.transform.position.y + distanceY, this.transform.position.z + distanceZ), this.transform.rotation);
+            
         }
+        CancelInvoke();
     }
 }
 

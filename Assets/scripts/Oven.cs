@@ -100,8 +100,6 @@ public class Oven : MonoBehaviour
         switch (test.stateOfOvenSlider)
         {
             case 0:
-                
-                Debug.Log("case 0");
                 if (inOven & !timerOn)
                 {
                     timerCanvas.enabled = true;
@@ -119,7 +117,6 @@ public class Oven : MonoBehaviour
                     break;
                 }
                 fill.GetComponent<Image>().color = new Vector4(0 / 255.0f, 255 / 255.0f, 0 / 255.0f, 1);
-                Debug.Log("case 1: " + test.stateOfOvenSlider);
                 timeLeft -= Time.deltaTime / 5f;
                 timerSlider.value = 1 - timeLeft / time;
                 if(timeLeft <= 0)
@@ -153,9 +150,6 @@ public class Oven : MonoBehaviour
                 {
                     timerCanvas.enabled = true;
                 }
-
-
-                Debug.Log("case 2: " + test.stateOfOvenSlider);
                 timeLeft -= Time.deltaTime / 5f;
                 timerSlider.value = 1 - timeLeft / time;
                 if (timeLeft <= 0)
@@ -170,7 +164,6 @@ public class Oven : MonoBehaviour
                 }
                 break;
             case 3:
-                Debug.Log("case 3: " + test.stateOfOvenSlider);
                 buttonCanvas.enabled = false;
                 test.stateOfOvenSlider = 0;
                 flag = 0;
@@ -205,11 +198,6 @@ public class Oven : MonoBehaviour
                 timerSlider.value = 0;
                 timerOn = false;
                 result = ItemMaterial.GetReciptes(where, ingr);
-                //if (ItemMaterial.FindIndex(result) != -1)
-                //{
-                //    spawn = Instantiate(test.listOfItems[ItemMaterial.FindIndex(result)], positionGO.transform.position, this.transform.rotation);
-                //    result = "nope";
-                //}
             }
         }
     }

@@ -70,6 +70,9 @@ public class kettle : MonoBehaviour
 
             
             ingr[flag] = other.GetComponent<ItemMaterial>().nameUI;
+            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            Invoke("Destroy", 5f);
+
             other.gameObject.SetActive(false);
 
             if (flag == 5)
@@ -81,6 +84,12 @@ public class kettle : MonoBehaviour
             flag++;
         }
 
+    }
+
+    public void Destroy(GameObject go)
+    {
+        Destroy(go);
+        CancelInvoke();
     }
 
     private void FixedUpdate()
@@ -98,11 +107,6 @@ public class kettle : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < ingr.Length; i++)
-                {
-                    Debug.Log(ingr[i]);
-                }
-                Debug.Log(ItemMaterial.GetReciptes(where, ingr));
                 timerCanvas.enabled = false;
                 timerSlider.value = 0;
                 timerOn = false;
