@@ -56,7 +56,7 @@ public class ColliderTrigger : MonoBehaviour
             quantity--;
             if (quantity <= 0)
             {
-                Invoke("CreateNewObject", time);                                                                              //Вызов метода создания объекта через время
+                Invoke(nameof(CreateNewObject), time);                                                                              //Вызов метода создания объекта через время
             }
         }
     }

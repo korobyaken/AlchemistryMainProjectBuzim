@@ -36,6 +36,8 @@ public class Oven : MonoBehaviour
     public float timeLeft = 0f;
 
     public GameObject rotationObject;
+    GameObject rightHand;
+    GameObject leftHand;
 
     public string[] Recipte = new string[5];
 
@@ -55,6 +57,7 @@ public class Oven : MonoBehaviour
     public Color32 testColor;
     private void Start()
     {
+        //rightHand = FindObjectOfType;
         timerCanvas.enabled = false;
         buttonCanvas.enabled = false;
         timeLeft = time;
