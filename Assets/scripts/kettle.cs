@@ -10,6 +10,9 @@ public class kettle : MonoBehaviour
     const string where = "Котёл";
 
 
+    public static event Action kettleNonRecipte;
+    public static event Action kettleTimeOut;
+    public static event Action SpawnObj;
 
     public GameObject temprary;
 
@@ -27,8 +30,6 @@ public class kettle : MonoBehaviour
     public float time = 100f;
     public float timeLeft = 0f;
     float valueTime;
-
-    bool fl = true;
 
     GameObject spawn;
 
@@ -113,8 +114,13 @@ public class kettle : MonoBehaviour
                 result = ItemMaterial.GetReciptes(where, ingr);
                 if (ItemMaterial.FindIndex(result) != -1)
                 {
+                    SpawnObj?.Invoke();
                     spawn = Instantiate(test.listOfItems[ItemMaterial.FindIndex(result)], kottelPosition.transform.position, this.transform.rotation);
                     result = "nope";
+                }
+                else
+                {
+                    kettleNonRecipte.Invoke();
                 }
                 for (int i = 0; i < ingr.Length; i++)
                 {

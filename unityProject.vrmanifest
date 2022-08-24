@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.alchemistry.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "D:\\Alchemistry\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "D:\\GH\\AlchemistryMainProjectBuzim-master\\AlchemistryMainProjectBuzim-master\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Alchemistry [Testing]"

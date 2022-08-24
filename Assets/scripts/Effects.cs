@@ -5,21 +5,35 @@ using TMPro;
 
 public class Effects : MonoBehaviour
 {
+    
+    public static GameObject mt;
+
+
     public ParticleSystem kettleNonRecipte;
     public ParticleSystem kettleTimeOut;
     public ParticleSystem ovenNonRecipte;
     public ParticleSystem ovenTimeOut;
+    public ParticleSystem spawn;
 
-    [SerializeField]
-    public static GameObject mt;
-    public GameObject spawned;
+
 
     public Vector3 popravka;
 
     private void Start()
     {
+        kettle.SpawnObj += KettelSpawn;
+        Oven.ovenNonRecipte += OvenNonRecipte;
+        Oven.ovenTimeOut += OvenTimeOut;
+        kettle.kettleNonRecipte += KettelNonRecipte;
+        kettle.kettleTimeOut += KettleTimeOut;
+
         mt = GameObject.Find("NameUI");
-        Debug.Log("PanzerKampfWagenIV");
+        //Debug.Log("PanzerKampfWagenIV");
+    }
+
+    public void KettelSpawn()
+    {
+        spawn.Play();
     }
 
     public void KettelNonRecipte()

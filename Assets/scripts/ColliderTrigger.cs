@@ -56,7 +56,7 @@ public class ColliderTrigger : MonoBehaviour
             quantity--;
             if (quantity <= 0)
             {
-                Invoke(nameof(CreateNewObject), time);                                                                              //Вызов метода создания объекта через время
+                Invoke("CreateNewObject", time);                                                                              //Вызов метода создания объекта через время
             }
         }
     }
@@ -64,6 +64,10 @@ public class ColliderTrigger : MonoBehaviour
     {
         if (quantity <= 0)                                                                                              
         {
+            if (spawned == null)
+            {
+                Debug.Log("lllllllll");
+            }
             if (!spawned.GetComponent<Rigidbody>().useGravity)
             {
                 spawned.GetComponent<Rigidbody>().useGravity = true;

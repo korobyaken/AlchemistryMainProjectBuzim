@@ -34,6 +34,7 @@ public class Pointer : MonoBehaviour
 
     private void UpdateLine()
     {
+
         //Debug.Log("Update Line");
         PointerEventData data = m_inputmModule.GetData();
 
@@ -41,16 +42,25 @@ public class Pointer : MonoBehaviour
         RaycastHit hit = CreateRaycast(lenght);
         Vector3 endpos = transform.position + (transform.forward * taregLenght);
 
+        endpos = hit.point;
+
         line.SetPosition(0, transform.position);
         line.SetPosition(1, endpos);
 
-        endpos = hit.point;
-        if (hit.collider != null)
+        
+        if (hit.collider.gameObject.GetComponent<ItemMaterial>() != null)
         {
             GameObject other = hit.collider.gameObject;
 
             Effects.ShowName(other);
         }
+        else
+        {
+            GameObject other = hit.collider.gameObject;
+
+            Effects.ShowName(other);
+        }
+        
 
 
         Dot.transform.position = endpos;

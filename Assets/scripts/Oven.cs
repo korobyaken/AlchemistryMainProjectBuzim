@@ -13,6 +13,9 @@ public class Oven : MonoBehaviour
 
     public bool inOven;
 
+    public static event Action ovenNonRecipte;
+    public static event Action ovenTimeOut;
+
     public bool timerOn = false;
 
     GameObject spawn;
@@ -36,8 +39,6 @@ public class Oven : MonoBehaviour
     public float timeLeft = 0f;
 
     public GameObject rotationObject;
-    GameObject rightHand;
-    GameObject leftHand;
 
     public string[] Recipte = new string[5];
 
@@ -57,7 +58,6 @@ public class Oven : MonoBehaviour
     public Color32 testColor;
     private void Start()
     {
-        //rightHand = FindObjectOfType;
         timerCanvas.enabled = false;
         buttonCanvas.enabled = false;
         timeLeft = time;
@@ -97,9 +97,6 @@ public class Oven : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-
-
         switch (test.stateOfOvenSlider)
         {
             case 0:
@@ -131,6 +128,15 @@ public class Oven : MonoBehaviour
                         spawn = Instantiate(test.listOfItems[ItemMaterial.FindIndex(result)], positionGO.transform.position, this.transform.rotation);
                         result = "nope";
                     }
+                    else
+                    {
+                        ovenNonRecipte.Invoke();
+                        fill.GetComponent<Image>().color = testColor;  /*new Vector4(255 / 255.0f, 0 / 255.0f, 0 / 255.0f, 1); */
+                        test.stateOfOvenSlider++;
+                        timeLeft = time;
+                        timerCanvas.enabled = false;
+                        goto case 3;
+                    }
 
                     ingr = ingrEmpty;
 
@@ -160,6 +166,7 @@ public class Oven : MonoBehaviour
                     if (destroy)
                     {
                         Destroy(spawn);
+                        ovenTimeOut?.Invoke();
                     }
                     test.stateOfOvenSlider++;
                     timeLeft = time;

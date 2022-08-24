@@ -7,7 +7,10 @@ using UnityEngine;
 
 public class ItemMaterial : MonoBehaviour
 {
-    public string nameUI;                                                                                               //Название объекта
+    public string nameUI;                                                                                               //Название 
+    int needKicks = 5;                                                                                                  //кол-во нужных ударов для ступки
+
+
 
     public static bool OnArray(List<string> ar, string name)                                                            //Метод для поиска строки внутри листа
     {
@@ -142,7 +145,7 @@ public class ItemMaterial : MonoBehaviour
 
     public static string GetReciptes(string where, string[] ar)                                                         //Метод для посика рецепта в json'е состоящего из ингридиентов массива
     {
-        string nope = "nope" ;
+        string nope = "nope";
         test.Recipe[] thisArrayOfReciepes = test.arReciepes;
 
         for (int i = 0; i < thisArrayOfReciepes.Length; i++)
