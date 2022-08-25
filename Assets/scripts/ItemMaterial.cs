@@ -8,8 +8,9 @@ using UnityEngine;
 public class ItemMaterial : MonoBehaviour
 {
     public string nameUI;                                                                                               //Название 
-    int needKicks = 5;                                                                                                  //кол-во нужных ударов для ступки
-
+    public int needKicks = 5;                                                                                           //кол-во нужных ударов для ступки
+    public int Kicks = 0;
+    public bool InMortar = false;
 
 
     public static bool OnArray(List<string> ar, string name)                                                            //Метод для поиска строки внутри листа
@@ -59,8 +60,8 @@ public class ItemMaterial : MonoBehaviour
 
     public void Start()
     {
-        test.listOfUIName.Add(this.nameUI);                                                                             //Добавляет имя объекта в лист с именами всех объектов
-        test.listOfItems.Add(this.gameObject);                                                                          //Добавляет объект в лист со всеми объектами с тем же индексом, что и имя
+        test.listOfUIName.Add(nameUI);                                                                              //Добавляет имя объекта в лист с именами всех объектов
+        test.listOfItems.Add(gameObject);                                                                           //Добавляет объект в лист со всеми объектами с тем же индексом, что и имя
     }
 
     public static int HowManyElements(string[] ar )                                                                     //метод для поиска кол-ва не нулевых элементов массива

@@ -21,10 +21,6 @@ public class Pointer : MonoBehaviour
     }
 
 
-    private void Start()
-    {
-
-    }
     void FixedUpdate()
     {
         UpdateLine();
@@ -47,20 +43,21 @@ public class Pointer : MonoBehaviour
         line.SetPosition(0, transform.position);
         line.SetPosition(1, endpos);
 
-        
-        if (hit.collider.gameObject.GetComponent<ItemMaterial>() != null)
+        if (hit.collider != null)
         {
-            GameObject other = hit.collider.gameObject;
+            if (hit.collider.gameObject.GetComponent<ItemMaterial>() != null)
+            {
+                GameObject other = hit.collider.gameObject;
 
-            Effects.ShowName(other);
-        }
-        else
-        {
-            GameObject other = hit.collider.gameObject;
+                Effects.ShowName(other);
+            }
+            else
+            {
+                GameObject other = hit.collider.gameObject;
 
-            Effects.ShowName(other);
+                Effects.ShowName(other);
+            }
         }
-        
 
 
         Dot.transform.position = endpos;

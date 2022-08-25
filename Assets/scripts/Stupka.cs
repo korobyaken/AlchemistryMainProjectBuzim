@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Stupka : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector]
+    public int needKicks = 0;
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.tag == "Material")
+        {
+            other.gameObject.GetComponent<ItemMaterial>().InMortar = true;
+            needKicks = other.gameObject.GetComponent<ItemMaterial>().needKicks;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.tag == "Material")
+        {
+            other.gameObject.GetComponent<ItemMaterial>().InMortar = false;
+        }
     }
+
 }

@@ -8,6 +8,8 @@ TagManager:
   - FxTemporaire
   - Material
   - Oven
+  - Stupka
+  - Stay
   layers:
   - Default
   - TransparentFX

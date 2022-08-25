@@ -24,7 +24,8 @@ public class ColliderTrigger : MonoBehaviour
         if (other.tag == "Material")                                                                                    
         {
             quantity++;
-            if (ItemMaterial.OnArray(test.listOfItemsOnShelf, other.GetComponent<ItemMaterial>().nameUI) == false)      //Если этого объекута нет на другой полке
+            Debug.Log(ItemMaterial.OnArray(test.listOfItemsOnShelf, other.GetComponent<ItemMaterial>().nameUI));
+            if (ItemMaterial.OnArray(test.listOfItemsOnShelf, other.GetComponent<ItemMaterial>().nameUI) == false)      //Если этого объекта нет на другой полке
             {
                 test.listOfItemsOnShelf.Add(other.GetComponent<ItemMaterial>().nameUI);                                 //Добавление имени объекта в список объектов на полках
                 if (temporary_GO is null && !been)                                                                      //Если объект в первый раз
@@ -68,15 +69,19 @@ public class ColliderTrigger : MonoBehaviour
             {
                 Debug.Log("lllllllll");
             }
-            if (!spawned.GetComponent<Rigidbody>().useGravity)
+            else 
             {
-                spawned.GetComponent<Rigidbody>().useGravity = true;
+                if (!spawned.GetComponent<Rigidbody>().useGravity)
+                {
+                    spawned.GetComponent<Rigidbody>().useGravity = true;
+                }
             }
-            Debug.Log("Function point");
             Instantiate(spawned, new Vector3(this.transform.position.x + distanceX, this.transform.position.y + distanceY, this.transform.position.z + distanceZ), this.transform.rotation);
             
         }
         CancelInvoke();
     }
+
+    
 }
 

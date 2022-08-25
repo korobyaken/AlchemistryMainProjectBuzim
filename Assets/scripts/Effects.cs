@@ -8,12 +8,17 @@ public class Effects : MonoBehaviour
     
     public static GameObject mt;
 
+    public static GameObject stayOgj;
 
     public ParticleSystem kettleNonRecipte;
     public ParticleSystem kettleTimeOut;
     public ParticleSystem ovenNonRecipte;
     public ParticleSystem ovenTimeOut;
-    public ParticleSystem spawn;
+    public ParticleSystem kettelSpawn;
+    public ParticleSystem ovenSpawn;
+    //public ParticleSystem breakGlass;
+    public ParticleSystem mortarSpawn;
+    public ParticleSystem mortarHit;
 
 
 
@@ -21,19 +26,33 @@ public class Effects : MonoBehaviour
 
     private void Start()
     {
+        stayOgj = GameObject.FindGameObjectWithTag("Stay");
         kettle.SpawnObj += KettelSpawn;
         Oven.ovenNonRecipte += OvenNonRecipte;
         Oven.ovenTimeOut += OvenTimeOut;
         kettle.kettleNonRecipte += KettelNonRecipte;
         kettle.kettleTimeOut += KettleTimeOut;
 
+        PalkaStupki.AMortarHit += MortarHit;
+        PalkaStupki.AMortarSpawn += MortarSpawn;
+
         mt = GameObject.Find("NameUI");
         //Debug.Log("PanzerKampfWagenIV");
     }
 
+    public void MortarSpawn()
+    {
+        mortarSpawn.Play();
+    }
+
+    public void MortarHit()
+    {
+        mortarHit.Play();
+    }
+
     public void KettelSpawn()
     {
-        spawn.Play();
+        kettelSpawn.Play();
     }
 
     public void KettelNonRecipte()
@@ -69,6 +88,7 @@ public class Effects : MonoBehaviour
         else
         {
             mt.SetActive(false);
+            mt.transform.SetParent(stayOgj.transform);
         }
     }
 }
